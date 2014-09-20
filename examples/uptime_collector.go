@@ -9,10 +9,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/grepory/tessen"
+	"github.com/grepory/tessen/metrics"
 )
 
-// Convert a string to a base-10, 32-bit int.
+// StringToInt converts a string to a base-10, 32-bit int.
 func StringToInt(s string) int64 {
 	num, err := strconv.ParseInt(s, 10, 32)
 	if err != nil {
@@ -49,23 +49,23 @@ func GetUptime() float64 {
 
 // Collect is acn implementation of tessen.Collector.Collect() that returns the
 // uptime for the system being monitored.
-func Collect() []tessen.Metric {
-	metrics := make([]tessen.Metric, 1)
+func Collect() []metrics.Metric {
+	collected := make([]metrics.Metric, 1)
 
 	uptime := GetUptime()
 
 	hostname, _ := os.Hostname()
 
-	metrics[0] = tessen.Metric{
+	collected[0] = metrics.Metric{
 		Name:      hostname,
 		Value:     uptime,
 		Timestamp: time.Now().Unix(),
 	}
 
-	return metrics
+	return collected
 }
 
 func main() {
-	collector := tessen.Collector{Collect}
-	collector.Collect()
+	collector := metrics.NewCollector(Collect)
+	fmt.Printf(collector.Collect())
 }
