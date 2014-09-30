@@ -50,8 +50,6 @@ func GetUptime() float64 {
 	return uptime.Seconds()
 }
 
-// Collect is an implementation of tessen.Collector.Collect() that returns the
-// uptime for the system being monitored.
 func (r *UptimeReader) Read() []metrics.Metric {
 	collected := make([]metrics.Metric, 1)
 
