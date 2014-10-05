@@ -1,8 +1,9 @@
-package metrics
+package metric
 
 import "fmt"
 
-// A Collector will collect metrics.
+// A Collector reads and collects metrics, formats them, and prints them to
+// STDOUT.
 type Collector struct {
 	Reader    MetricReader
 	Formatter MetricFormatter

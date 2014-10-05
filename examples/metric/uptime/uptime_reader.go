@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/grepory/tessen/metrics"
+	"github.com/grepory/tessen/metric"
 )
 
 type UptimeReader struct {
@@ -50,14 +50,14 @@ func GetUptime() float64 {
 	return uptime.Seconds()
 }
 
-func (r *UptimeReader) Read() []metrics.Metric {
-	collected := make([]metrics.Metric, 1)
+func (r *UptimeReader) Read() []metric.Metric {
+	collected := make([]metric.Metric, 1)
 
 	uptime := GetUptime()
 
 	hostname, _ := os.Hostname()
 
-	collected[0] = metrics.Metric{
+	collected[0] = metric.Metric{
 		Name:      hostname,
 		Value:     uptime,
 		Timestamp: time.Now().Unix(),

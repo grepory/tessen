@@ -1,4 +1,4 @@
-package metrics
+package metric
 
 // A Metric is typically an association between a metric name and a measurement
 // in time.

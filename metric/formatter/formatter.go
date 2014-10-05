@@ -1,12 +1,12 @@
 package formatter
 
-import "github.com/grepory/tessen/metrics"
+import "github.com/grepory/tessen/metric"
 
 // A MetricFormatter is responsible for turning a Metric struct into a string
 // acceptable by a metrics backend. Examples:
 // Graphite, OpenTSDB, Riemann
 type Formatter interface {
-	Format(metrics.Metric) string
+	Format(metric.Metric) string
 }
 
 func DefaultFormatter() Formatter {
