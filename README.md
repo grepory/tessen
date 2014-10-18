@@ -1,6 +1,6 @@
 # Tessen
 
-Tessen is a module framework for Sensu plugins written in Go. The aim is to
+Tessen is a modular framework for Sensu plugins written in Go. The aim is to
 decouple Sensu checks, metrics, handlers, etc. from Ruby in an effort to make
 them more portable and more easily distributable.
 
