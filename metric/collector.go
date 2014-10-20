@@ -6,7 +6,7 @@ import "fmt"
 // STDOUT.
 type Collector struct {
 	Reader    MetricReader
-	Formatter MetricFormatter
+	Formatter Formatter
 }
 
 func (c *Collector) Run() {
